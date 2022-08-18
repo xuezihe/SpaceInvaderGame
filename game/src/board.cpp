@@ -32,6 +32,8 @@ void game::board::initGame()
     player.speed.x = 5;
     player.speed.y = 5;
     player.color = BLACK;
+	_ammo = AMMO_NUM;
+	_needToReload = false;
 
     // Initialize enemies
     for (int i = 0; i < NUM_MAX_ENEMIES; i++)
@@ -159,7 +161,7 @@ void game::board::boardLogic()
 				}
 			}
 
-			//player movement
+			// player movement
 			if (IsKeyDown(KEY_D))
 			{
 				player.rec.x += player.speed.x;
@@ -175,6 +177,12 @@ void game::board::boardLogic()
 			if (IsKeyDown(KEY_S))
 			{
 				player.rec.y += player.speed.y;
+			}
+
+			// player reload
+			if (IsKeyPressed(KEY_R))
+			{
+				reload();
 			}
 
 			// Player collision with enemy
@@ -216,12 +224,17 @@ void game::board::boardLogic()
 
 				for (int i = 0; i < NUM_SHOOTS; i++)
 				{
-					if (!shoot[i].active && shootRate % 20 == 0)
+					if (!shoot[i].active && shootRate % 20 == 0 && _ammo>0)
 					{
 						shoot[i].rec.x = player.rec.x;
 						shoot[i].rec.y = player.rec.y + player.rec.height / 4;
 						shoot[i].active = true;
+						_ammo--;
 						break;
+					}
+					if (_ammo<=0)
+					{
+						_needToReload = true;
 					}
 				}
 			}
@@ -279,18 +292,18 @@ void game::board::boarddraw()
 		// draw player
 		DrawTexture(_playership, player.rec.x -5, player.rec.y-20, WHITE);
 
-		//draw
+		// draw wave
 		if (wave == FIRST)
 		{
-			DrawText("FIRST WAVE", _screenWidth / 2 - MeasureText("FIRST WAVE", 40) / 2, _screenHeight / 2 - 40, 40, Fade(WHITE, alpha));
+			DrawText("FIRST WAVE", _screenWidth / 2 - MeasureText("FIRST WAVE", 40) / 2, _screenHeight / 2 - 40, 40, Fade(BLACK, alpha));
 		}
 		else if (wave ==SECOND)
 		{
-			DrawText("SECOND WAVE", _screenWidth / 2 - MeasureText("SECOND WAVE", 40) / 2, _screenHeight / 2 - 40, 40, Fade(WHITE, alpha));
+			DrawText("SECOND WAVE", _screenWidth / 2 - MeasureText("SECOND WAVE", 40) / 2, _screenHeight / 2 - 40, 40, Fade(BLACK, alpha));
 		}
 		else
 		{
-			DrawText("FINAL WAVE", _screenWidth / 2 - MeasureText("THIRD WAVE", 40) / 2, _screenHeight / 2 - 40, 40, Fade(WHITE, alpha));
+			DrawText("FINAL WAVE", _screenWidth / 2 - MeasureText("THIRD WAVE", 40) / 2, _screenHeight / 2 - 40, 40, Fade(BLACK, alpha));
 		}
 		for (int i = 0; i < activeEnemies; i++)
 		{
@@ -299,13 +312,15 @@ void game::board::boarddraw()
 				DrawTexture(_enemyTexture, enemy[i].rec.x , enemy[i].rec.y , WHITE);
 			}
 		}
-
+		// draw shoot
 		for (int i = 0; i < NUM_SHOOTS; i++)
 		{
 			if (shoot[i].active) {DrawRectangleRec(shoot[i].rec, shoot[i].color);}
 		}
 
+		// draw scroe
 		DrawText(TextFormat("%04i", score), 20, 20, 40, GRAY);
+		DrawText(TextFormat("AMMO: %04i", _ammo), screenWidth-250, 20, 40, GRAY);
 
 		if (victory)
 		{
@@ -334,6 +349,11 @@ void game::board::loadImage()
 	_enemyTexture = LoadTextureFromImage(enemyImage);
 
 	UnloadImage(playerimage);
+}
+
+void game::board::reload()
+{
+	_ammo = AMMO_NUM;
 }
 
 

@@ -15,6 +15,9 @@ static const int fps = 60;
 #define PLAYER_SHIP_HEIGHT     30
 #define ENEMYSHIP_WIDTH        15
 #define ENEMYSHIP_HEIGHT        15
+#define  AMMO_NUM           20
+
+// image load
 
 // structure define
 typedef enum { FIRST, SECOND, THIRD } EnemyWave;

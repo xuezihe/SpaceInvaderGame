@@ -14,6 +14,7 @@ namespace game
 		void boarddraw();
 		void loadImage();
 		void unloadrsc();
+		void reload();
 
 
 	public:
@@ -29,11 +30,16 @@ namespace game
 
 		bool pause, gameOver, victory;
 		int score;
+
 	private:
 		int  _screenWidth;
 		int _screenHeight;
 		Texture _playership;
 		Texture _enemyTexture;
+
+		// shoot related
+		int _ammo;
+		bool _needToReload;
 
 
 
