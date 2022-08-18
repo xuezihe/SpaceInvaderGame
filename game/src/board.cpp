@@ -1,4 +1,6 @@
+#include "cassert"
 #include "board.h"
+
 
 
 game::board::board(int screenWidth, int screenHeight):_screenWidth(screenWidth),_screenHeight(screenHeight){}
@@ -271,6 +273,9 @@ void game::board::boarddraw()
 	{
 		// draw player
 		DrawRectangleRec(player.rec, player.color);
+		// DrawTexture(_playership, player.rec.x, player.rec.y, RED);
+		// DrawTexture(_playership, screenWidth / 2 - _playership.width / 2, screenHeight / 2 - _playership.height / 2, WHITE);
+
 
 		//draw
 		if (wave == FIRST)
@@ -312,4 +317,13 @@ void game::board::boarddraw()
 		DrawText("PRESS [ENTER] TO PLAY AGAIN", _screenWidth / 2 - MeasureText("PRESS [ENTER] TO PLAY AGAIN", 20) / 2, _screenHeight / 2 - 50, 20, GRAY);
 	}
 
+}
+
+void game::board::loadImage()
+{
+	Image image = LoadImage("../game/src/rscs/Ship.png");
+	assert(image.width<64);
+
+	_playership = LoadTextureFromImage(image);
+	UnloadImage(image);
 }

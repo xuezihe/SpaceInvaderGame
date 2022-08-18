@@ -7,6 +7,7 @@ Game::Game(int width, int height, int fps, std::string title):_board(width, heig
 	InitWindow(width, height, title.c_str());
 	SetTargetFPS(fps);
 	_board.initGame();
+	_board.loadImage();
 
 }
 Game::~Game()

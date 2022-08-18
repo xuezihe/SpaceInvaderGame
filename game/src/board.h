@@ -11,6 +11,7 @@ namespace game
 		void initGame();
         void boardLogic();
 		void boarddraw();
+		void loadImage();
 
 
 	public:
@@ -26,8 +27,10 @@ namespace game
 
 		bool pause, gameOver, victory;
 		int score;
+	private:
 		int  _screenWidth;
 		int _screenHeight;
+		Texture _playership;
 
 
 
