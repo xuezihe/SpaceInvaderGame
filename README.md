@@ -22,4 +22,4 @@ ENTER:Restart game
 three waves totally.
 
 # Screenshot
-<img src="https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif" width="40" height="40" />
+<img src="https://github.com/xuezihe/SpaceInvaderGame/blob/master/resources/game.gif" width="400" height="300" />
