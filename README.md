@@ -1,10 +1,6 @@
 # Space Invader Game
 This is a simplified shoot game using C++ and raylib.
 
-## Video Tutorial
-A video covering this process is here\
-https://youtu.be/--gI9083QnU
-
 # Download this Game
 Download the game  repository from 
 https://github.com/xuezihe/SpaceInvaderGame/
