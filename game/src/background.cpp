@@ -6,7 +6,7 @@
 void background::init()
 {
 	scrollingSpeed = 0.0f;
-	image = LoadTexture("game/src/rscs/space.png");
+	image = LoadTexture("game/src/src/space.png");
 }
 
 
@@ -21,6 +21,6 @@ void background::updateBackground()
 
 void background::drawBackground()
 {
-	DrawTextureEx(image, Vector2 { scrollingSpeed, 20 }, 0.0f, 2.0f, WHITE);
-	DrawTextureEx(image, Vector2 { image.width * 2 + scrollingSpeed, 20 }, 0.0f, 2.0f, WHITE);
+	DrawTextureEx(image, Vector2 { scrollingSpeed, 10 }, 0.0f, 2.0f, WHITE);
+	DrawTextureEx(image, Vector2 { image.width * 2 + scrollingSpeed, 10 }, 0.0f, 2.0f, WHITE);
 }

@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32804.467
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "myRaylibSpaceInvaders", "_build\myRaylibSpaceInvaders.vcxproj", "{56866233-C2F2-1D2E-8BE6-B58BF7114096}"
 	ProjectSection(ProjectDependencies) = postProject
 		{8898EA18-743A-15EF-5DF5-284349369C3F} = {8898EA18-743A-15EF-5DF5-284349369C3F}
@@ -35,5 +37,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B1355A01-8771-46DA-931D-58558CA76C65}
 	EndGlobalSection
 EndGlobal
