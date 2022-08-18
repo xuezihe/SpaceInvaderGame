@@ -8,10 +8,12 @@ namespace game
 	{
 	public:
 		board(int screenWidth, int screenHeight);
+		~board();
 		void initGame();
         void boardLogic();
 		void boarddraw();
 		void loadImage();
+		void unloadrsc();
 
 
 	public:
@@ -31,6 +33,7 @@ namespace game
 		int  _screenWidth;
 		int _screenHeight;
 		Texture _playership;
+		Texture _enemyTexture;
 
 
 

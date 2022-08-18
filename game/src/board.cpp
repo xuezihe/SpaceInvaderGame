@@ -5,6 +5,12 @@
 
 game::board::board(int screenWidth, int screenHeight):_screenWidth(screenWidth),_screenHeight(screenHeight){}
 
+game::board::~board()
+{
+	UnloadTexture(_playership);
+	UnloadTexture(_enemyTexture);
+}
+
 void game::board::initGame()
 {
     shootRate = 0;
@@ -21,8 +27,8 @@ void game::board::initGame()
     // Initialize player
     player.rec.x = 20;
     player.rec.y = 50;
-    player.rec.width = 20;
-    player.rec.height = 20;
+    player.rec.width = PLAYER_SHIP_WIDTH;
+    player.rec.height = PLAYER_SHIP_HEIGHT;
     player.speed.x = 5;
     player.speed.y = 5;
     player.color = BLACK;
@@ -30,8 +36,8 @@ void game::board::initGame()
     // Initialize enemies
     for (int i = 0; i < NUM_MAX_ENEMIES; i++)
     {
-        enemy[i].rec.width = 10;
-        enemy[i].rec.height = 10;
+        enemy[i].rec.width = ENEMYSHIP_WIDTH;
+        enemy[i].rec.height = ENEMYSHIP_HEIGHT;
         enemy[i].rec.x = GetRandomValue(_screenWidth, _screenWidth + 1000);
         enemy[i].rec.y = GetRandomValue(0, _screenHeight - enemy[i].rec.height);
         enemy[i].speed.x = 5;
@@ -53,7 +59,6 @@ void game::board::initGame()
         shoot[i].color = MAROON;
     }
 	DrawText("START FIGHT!", _screenWidth / 2 - MeasureText("START FIGHT!", 40) / 2, _screenHeight / 2 - 40, 40, Fade(BLACK, alpha));
-
 }
 
 
@@ -207,7 +212,7 @@ void game::board::boardLogic()
 			// Shoot initialization
 			if (IsKeyDown(KEY_SPACE))
 			{
-				shootRate += 5;
+				shootRate += 4;
 
 				for (int i = 0; i < NUM_SHOOTS; i++)
 				{
@@ -272,10 +277,7 @@ void game::board::boarddraw()
 	if (!gameOver)
 	{
 		// draw player
-		DrawRectangleRec(player.rec, player.color);
-		// DrawTexture(_playership, player.rec.x, player.rec.y, RED);
-		// DrawTexture(_playership, screenWidth / 2 - _playership.width / 2, screenHeight / 2 - _playership.height / 2, WHITE);
-
+		DrawTexture(_playership, player.rec.x -5, player.rec.y-20, WHITE);
 
 		//draw
 		if (wave == FIRST)
@@ -292,7 +294,10 @@ void game::board::boarddraw()
 		}
 		for (int i = 0; i < activeEnemies; i++)
 		{
-			if (enemy[i].active) {DrawRectangleRec(enemy[i].rec, enemy[i].color);}
+			if (enemy[i].active)
+			{
+				DrawTexture(_enemyTexture, enemy[i].rec.x , enemy[i].rec.y , WHITE);
+			}
 		}
 
 		for (int i = 0; i < NUM_SHOOTS; i++)
@@ -304,26 +309,31 @@ void game::board::boarddraw()
 
 		if (victory)
 		{
-			DrawText("YOU WIN", _screenWidth / 2 - MeasureText("YOU WIN", 40) / 2, _screenHeight / 2 - 40, 40, BLACK);
+			DrawText("YOU WIN", _screenWidth / 2 - MeasureText("YOU WIN", 40) / 2, _screenHeight / 2 - 40, 40, GOLD);
 		}
 
 		if (pause)
 		{
-			DrawText("GAME PAUSED", _screenWidth / 2 - MeasureText("GAME PAUSED", 40) / 2, _screenHeight / 2 - 40, 40, GRAY);
+			DrawText("GAME PAUSED", _screenWidth / 2 - MeasureText("GAME PAUSED", 40) / 2, _screenHeight / 2 - 40, 40, RAYWHITE);
 		}
 	}
 	else
 	{
-		DrawText("PRESS [ENTER] TO PLAY AGAIN", _screenWidth / 2 - MeasureText("PRESS [ENTER] TO PLAY AGAIN", 20) / 2, _screenHeight / 2 - 50, 20, GRAY);
+		DrawText("PRESS [ENTER] TO PLAY AGAIN", _screenWidth / 2 - MeasureText("PRESS [ENTER] TO PLAY AGAIN", 20) / 2, _screenHeight / 2 - 50, 20, RAYWHITE);
 	}
 
 }
 
 void game::board::loadImage()
 {
-	Image image = LoadImage("../game/src/rscs/Ship.png");
-	assert(image.width<64);
+	Image playerimage = LoadImage("game/src/rscs/Ship.png");
+	assert(playerimage.width>=64);
+	_playership = LoadTextureFromImage(playerimage);
+	Image enemyImage = LoadImage("game/src/rscs/enemy.png");
+	ImageResize(&enemyImage, ENEMYSHIP_WIDTH, ENEMYSHIP_HEIGHT);
+	_enemyTexture = LoadTextureFromImage(enemyImage);
 
-	_playership = LoadTextureFromImage(image);
-	UnloadImage(image);
+	UnloadImage(playerimage);
 }
+
+

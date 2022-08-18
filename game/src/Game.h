@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include "board.h"
+#include "background.h"
 
 
 
@@ -17,8 +18,7 @@ private:
 	void update();
 	void draw();
 	game::board _board;
-
-
+	background _backGround;
 
 
 };
