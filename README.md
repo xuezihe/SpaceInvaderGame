@@ -4,7 +4,9 @@ This is a simplified shoot game using C++ and raylib.
 # Download this Game
 Download the game  repository from 
 https://github.com/xuezihe/SpaceInvaderGame/
-You can either download the zip file, or clone the repository.
+
+You can either download the latest file from release page.
+
 
 # How to Play
 P: Pause the Game
