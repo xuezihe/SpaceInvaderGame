@@ -13,6 +13,7 @@ Game::Game(int width, int height, int fps, std::string title) :_board(width, hei
 }
 Game::~Game()
 {
+	UnloadTexture(_backGround.image);
 	CloseWindow();
 }
 void Game::tick()

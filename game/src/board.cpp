@@ -282,15 +282,15 @@ void game::board::boarddraw()
 		//draw
 		if (wave == FIRST)
 		{
-			DrawText("FIRST WAVE", _screenWidth / 2 - MeasureText("FIRST WAVE", 40) / 2, _screenHeight / 2 - 40, 40, Fade(BLACK, alpha));
+			DrawText("FIRST WAVE", _screenWidth / 2 - MeasureText("FIRST WAVE", 40) / 2, _screenHeight / 2 - 40, 40, Fade(WHITE, alpha));
 		}
 		else if (wave ==SECOND)
 		{
-			DrawText("SECOND WAVE", _screenWidth / 2 - MeasureText("SECOND WAVE", 40) / 2, _screenHeight / 2 - 40, 40, Fade(BLACK, alpha));
+			DrawText("SECOND WAVE", _screenWidth / 2 - MeasureText("SECOND WAVE", 40) / 2, _screenHeight / 2 - 40, 40, Fade(WHITE, alpha));
 		}
 		else
 		{
-			DrawText("FINAL WAVE", _screenWidth / 2 - MeasureText("THIRD WAVE", 40) / 2, _screenHeight / 2 - 40, 40, Fade(BLACK, alpha));
+			DrawText("FINAL WAVE", _screenWidth / 2 - MeasureText("THIRD WAVE", 40) / 2, _screenHeight / 2 - 40, 40, Fade(WHITE, alpha));
 		}
 		for (int i = 0; i < activeEnemies; i++)
 		{
