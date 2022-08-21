@@ -43,6 +43,7 @@ make
 	
 ## Linux/macOS users
 Open your terminal, change to the game folder and type.
+
 '''
 make
 '''
