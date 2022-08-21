@@ -2,7 +2,7 @@
 #include "board.h"
 
 
-
+// this class include game mechanic
 game::board::board(int screenWidth, int screenHeight):_screenWidth(screenWidth),_screenHeight(screenHeight){}
 
 game::board::~board()
@@ -64,7 +64,7 @@ void game::board::initGame()
 }
 
 
-
+// game mechanic
 void game::board::boardLogic()
 {
 	if (!gameOver)
@@ -284,6 +284,7 @@ void game::board::boardLogic()
 	}
 }
 
+// draw board
 void game::board::boarddraw()
 {
 	ClearBackground(RAYWHITE);
@@ -339,6 +340,7 @@ void game::board::boarddraw()
 
 }
 
+// load image from files
 void game::board::loadImage()
 {
 	Image playerimage = LoadImage("game/src/src/Ship.png");
@@ -351,6 +353,7 @@ void game::board::loadImage()
 	UnloadImage(playerimage);
 }
 
+// ammo reload
 void game::board::reload()
 {
 	_ammo = AMMO_NUM;

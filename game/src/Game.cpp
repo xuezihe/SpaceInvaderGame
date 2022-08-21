@@ -1,6 +1,7 @@
+#include <cassert>
 #include "Game.h"
 
-#include <cassert>
+// wrap the game window
 Game::Game(int width, int height, int fps, std::string title) :_board(width, height)
 {
 	assert(!IsWindowReady());
@@ -16,6 +17,7 @@ Game::~Game()
 	UnloadTexture(_backGround.image);
 	CloseWindow();
 }
+// executed per frame, integrate update() and draw() 
 void Game::tick()
 {
 	BeginDrawing();
@@ -24,6 +26,7 @@ void Game::tick()
 	EndDrawing();
 }
 
+// wrap the check window close function 
 bool Game::gameShouldClose() const
 {
 	return WindowShouldClose();
