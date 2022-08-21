@@ -341,7 +341,7 @@ void game::board::boarddraw()
 
 void game::board::loadImage()
 {
-	Image playerimage = LoadImage("game/src/src/ship.png");
+	Image playerimage = LoadImage("game/src/src/Ship.png");
 	assert(playerimage.width>=64);
 	_playership = LoadTextureFromImage(playerimage);
 	Image enemyImage = LoadImage("game/src/src/enemy.png");
