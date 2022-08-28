@@ -25,6 +25,31 @@ Highly recommand using windows system
 
 You can download the latest file from release page https://github.com/xuezihe/SpaceInvaderGame/releases/tag/release.
 
+# Generate the project
+
+For windows users, there are two batch files you can use depending on what compiler you are using. For linux users you can simply use a terminal.
+Only do ONE of these options depending on your compiler and platform.
+## Windows Users
+Visual Studio users should run
+
+    premake-VisualStudio.bat
+	
+This will generate a Visual Studio project.
+	
+## Linux users
+cd to the game folder and run
+
+    ./premake5 gmake2
+
+This will generate a makefile for you.
+
+## macOS users
+cd to the game folder and run
+
+    ./premake5.osx gmake2
+	
+This will generate a makefile for you.
+
 # Build this game
 
 Only do ONE of these options depending on your compiler and platform.
