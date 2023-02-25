@@ -1,5 +1,5 @@
 # Space Invader Game
-This is a simplified shoot game using C++ and raylib. \
+This is a simplified shoot game using C++. \
 <img src="https://github.com/xuezihe/SpaceInvaderGame/blob/master/resources/game.gif" width="400" height="300" />
 
 
